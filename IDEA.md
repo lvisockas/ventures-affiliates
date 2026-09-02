@@ -143,6 +143,43 @@ Kill if waitlist conversion is under 3% or if fewer than 20% of sign-ups say yes
 4. Set up the concierge kit: spreadsheet, Stripe promo-code recipe, Wise payout flow, creative-kit template.
 5. One email each to Creem and Polar partnerships describing the marketplace layer.
 
+## 10. Variant: internal tool for a venture studio
+
+If the studio is the only vendor, the shape changes in four ways.
+
+**What gets easier**
+
+- The vendor side of the marketplace disappears. No pre-funding negotiation, no convincing vibecoders to accept a floor. The studio funds bounties from each venture's budget and sets them from that app's own LTV.
+- The trust problem creators keep raising is mostly solved. One counterparty with a payout history, one dashboard, a steady stream of new apps. That is the strongest version of the "new apps to feature this week" pitch, because it comes from a source that has paid before.
+- Money movement is plain contractor payouts: W-9 or W-8BEN, 1099-NEC above $2,000, Wise or Stripe payouts. No agent-of-payee question, no take rate to defend.
+- The software is nearly free. One Stripe account holding all studio products plus Affonso, Refgrow or Tolt at $29 to $69 a month covers tracking and coupons. The only thing worth building is a creator CRM with an offer catalog and per-creator performance across apps, which is a spreadsheet until it is not.
+
+**What gets harder**
+
+- Offer flow. A creator roster only stays warm with new offers. Fewer than two subscription launches a month and the network goes cold. This is the binding constraint for a studio.
+- Kill discipline collides with creator trust. A studio that kills apps fast strands the subscribers a creator sent and burns the creator. Any app put in front of creators needs a commitment: a minimum life of six to twelve months, or the bounty paid out regardless.
+- Portfolio quality. Creators judge the studio, not the app. One spammy or broken app taints the whole roster.
+- It is ops, not software. The value is the relationships and the per-creator conversion data. Someone has to spend five to ten hours a week on creator outreach, briefs and payouts.
+
+**Economics as a channel, not a business**
+
+The number to track is cost per retained subscriber against LTV, per venture and across the portfolio. At $15 a month and 6.5% churn, LTV is about $230, so paying $25 to $50 for a subscriber who survives the second renewal is a two to three month payback. Paid ads for SaaS typically land at $50 to $200 per acquisition with no retention filter. If creators post at all, this channel should beat ads on quality. The portfolio effect compounds: which creators convert for which category is knowledge every future venture inherits.
+
+**Why this is the right first move even for the marketplace**
+
+The riskiest assumption in section 4 is that creators post about unknown apps for a $25 to $50 bounty. As a studio you can test that with apps you control, no external vendor recruitment, in three weeks, for a few hundred euros. If creators post and convert on studio apps, the marketplace has a warm supply side and a track record on day one, and the studio becomes vendor zero. If they do not, the marketplace is dead and the studio learned it without building anything. This replaces V1b entirely and turns V1c into a channel experiment.
+
+**Minimum conditions for it to pay**
+
+- Two or more subscription apps launched per month, each with at least a handful of paying users and a landing page that converts.
+- 20 to 30 active creators in the AI-tools niche, hand-recruited.
+- A published promise on app lifetime or bounty guarantee.
+- One owner for creator ops.
+
+**Decision**
+
+Run it as a studio channel first. Buy the tracking, build only the creator roster and offer catalog, and treat the marketplace as a spin-out decision to be made after two cohorts of creator-driven launches.
+
 ## Appendix: the direction this replaced
 
 The first pass on 2026-09-02 researched the reverse framing, where the vibecoded app earns commissions by linking out to other merchants. It is filed under `research/app-as-publisher/`. Verdict there was not to build: Sovrn already gives that away and the long tail has no clicks to sell.
