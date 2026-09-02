@@ -1,142 +1,148 @@
-# Affiliate middleman for vibecoded apps
+# Creator bounties for vibecoded subscription apps
 
-Idea planning and research, 2026-09-02. No code. Sources are in `research/`; every quote there is search-snippet sourced because the session proxy blocked page fetches, so re-verify before treating any number as load-bearing.
+Idea planning and research, 2026-09-02. No code. Evidence lives in `research/`; every quote there is search-snippet sourced because the session proxy blocked page fetches, so re-verify before treating any number as load-bearing.
 
 ## 1. The idea in one paragraph
 
-Non-technical people now ship millions of small apps with Lovable, Bolt, Replit, v0, Base44 and Emergent. Most of them want to make money and most make nothing. Subscriptions convert at about 3% and require Stripe plumbing that vibecoders get wrong. Affiliate links are the monetization that fits an app which recommends things (trips, tools, gear, recipes, cards), but affiliate networks gate entry: Skimlinks accepts about 3% of applicants and rejects "mobile apps without a website", Amazon closes accounts without 3 sales in 180 days, CJ wants a live website. The platform signs the network agreements once, holds one aggregated account, and exposes monetization as something a vibecoder can add with a pasted prompt or an MCP server. It keeps a share of commissions.
+A non-technical builder ships a subscription app with Lovable, Bolt, Base44 or Replit, billed through Stripe or a merchant of record such as Lemon Squeezy, Polar, Creem or Dodo. They list an offer on the platform: "promote my app, keep 100% of the first month". Creators and publishers (small YouTube and TikTok channels that cover AI tools, Substack writers, long-tail AI directories, Discord owners) browse the offers, grab a link, post, and get paid. The platform does tracking, fraud checks, escrow and payouts, and keeps a cut of every bounty. Think TikTok Shop's creator marketplace, but for software subscriptions, where the sellers are the vibecoders and the products are the apps they cannot get anyone to look at.
 
 ## 2. What the research says
 
-### Demand is real but the bottleneck is traffic, not links
+### The vendor pain is real and the incumbents do not solve it
 
-- Lovable alone reports about 8M users, 80% non-technical, 50M+ projects. Replit is at $525M ARR. Emergent claims 6M builders. See `research/demand-side.md`.
-- Lovable's own May 2026 survey of 14,300 builders: 8 in 10 intend to monetise, 60.5% are not making money yet.
-- AdSense support was the top requested item on Lovable's feedback board for months and never shipped. No platform (Lovable, Bolt, Replit, Base44, v0) offers ads, affiliate, or revenue share to builders.
-- The recurring failure mode is not payments. It is "it's live, nobody comes": launch spike, day-7 collapse, builder moves on. Vibecoded sites are client-rendered and rank nowhere.
-- No published case of a vibecoded app earning materially from affiliate links was found. Either nobody does it or nobody reports it. Treat that as a warning, not an opportunity, until V1 says otherwise.
+- Affiliate software is plentiful and cheap: Rewardful, Tolt, FirstPromoter, Affonso, Refgrow, PromoteKit, Partnero, Creem's beta, Lemon Squeezy's hub. Almost none of it brings affiliates. Tolt says outright that it has no marketplace. Rewardful argues marketplaces are low quality. See `research/marketplace-competitors.md`.
+- The ones with real supply gate out tiny vendors. PartnerStack costs roughly $500 to $1,500 a month plus 3 to 15% of commissions and reviewers say it only makes sense past $1M ARR. Reditus is B2B only. Impact starts at $500 a month.
+- Founders say the software is the easy part. Hypefury had 700 affiliates and 20% ever lifted a finger. One Indie Hacker launched a program and got one sign-up. A widely cited stat says 95% of affiliates who join never make a sale. See `research/vendor-side.md`.
+- The builders' stated wall is distribution, not payments. Lovable's own survey says 8 in 10 want to monetise and 60% earn nothing. See `research/app-as-publisher/demand-side.md`.
 
-### Supply is joinable but hostile to unvetted sub-publishers
+### The offer format is respectable, the issuer is the problem
 
-- Free, low-bar networks exist: Impact, Awin (deposit only), Rakuten (no screening), PartnerStack (welcomes all). Sovrn Commerce approves after clicks flow and has an API built for "mobile apps, downloadable software". See `research/supply-side.md`.
-- The sub-affiliate model is established (Skimlinks, Sovrn, FlexOffers) and costs the publisher about 25% of commission.
-- Liability sits with the aggregator. Awin holds subnetworks "responsible for their Subpublishers' activities". CJ can permanently ban an aggregator if a single partner is caught. FlexOffers bans undisclosed sub-affiliates. One fraudulent or hallucinating app can kill the whole account.
-- Amazon is structurally against this model: Special Links are banned in client-side software other than approved store apps, PA-API needs 10 orders per 30 days, and there is an unresolved "not in connection with generative AI" clause. Amazon has to be excluded from the first version, which removes the network most consumers convert on.
-- Attribution is decaying. Safari expires cookies in 7 days and networks are moving to mandatory server-side tracking. Tiny apps cannot run postbacks. The aggregator has to.
+- "100% of the first month" is an established structure used by HubSpot, WP Engine, Omnisend, ProProfs, Upmetrics and Coursera. Bounties of 50 to 100% of month one are the norm for activation-focused programs. Lovable itself pays up to $100 per subscriber and Base44 pays $100.
+- Publishers' documented pain is the vendor disappearing: Jasper killing its program, Paddle shutting its affiliate system, founders who "run it for four months, and quietly shut the program down", PartnerStack's Trustpilot score of 2.0 driven by payout delays. Vibecoded apps are the highest-churn vendor class there is. See `research/publisher-supply.md`.
 
-### The idea already exists at three layers
+### The unit economics of the bounty are the hard part
 
-| Player | Model | What it does not do |
+At a $15 a month app, the bounty is $15. Publishers judge offers on earnings per click.
+
+| Click-to-paid rate | Earnings per click on a $15 bounty | Benchmark |
 |---|---|---|
-| ChatAds ($2M seed) | Per-request API, $0.90 per 1k requests, bring your own network accounts, markets directly to Lovable builders | Does not solve network approval. Pivoted its front door to a blog chat widget because "publishers who needed it most did not want to wire up an API" |
-| Sovrn Commerce | Free aggregated account, link-wrapping API, hosted MCP server, 25% cut, pays 90 days after month end | Not self-serve for zero-traffic apps in practice, no disclosure enforcement, no vibecoder distribution |
-| Wildfire RevenueEngine | Aggregated account across 60,000 merchant programs, built for AI chat and agents | Enterprise only, setup fee plus monthly fee |
-| Koah ($26M raised) | Ads inside AI apps, 30% cut, $10 eCPM | Ads not affiliate, aimed at apps with real MAU |
+| 0.8% (Rewardful's SaaS average) | $0.12 | "$0.50 indicates a struggling program" |
+| 3% | $0.45 | SaaS programs run $1.20 to $3.50 |
+| 8% (great freemium conversion) | $1.20 | competitive |
 
-See `research/prior-art.md`. The white space is narrow: one aggregated account for builders who cannot get approved directly, disclosure and server-side attribution baked into the SDK, distributed inside the vibecoding tools rather than as an API a builder has to wire up.
+The vendor can afford far more than one month. At 6.5% monthly churn, the lifetime value of a $15 subscriber is about $230, so a $15 bounty is about 6% of LTV and a 20%-for-12-months deal only pays the publisher about $26. The floor has to move up before creators will post: a minimum bounty in dollars, or bounty plus recurring, funded by the vendor's LTV headroom.
 
-### Unit economics are thin at the long tail
+### Who would actually post
 
-- Benchmarks: EPC about $0.65 for ecommerce, $1.20 to $3.50 for SaaS, $2.80 for finance leads. Global mean commission 8.3% of attributed revenue.
-- At a 30% take, $10k per month of platform revenue needs about $33k per month of commissions flowing through. At ecommerce EPC that is roughly 50,000 outbound clicks a month. At SaaS EPC it is roughly 15,000.
-- "Most vibe coders make $0 to $300 per month." An aggregator of apps that each get 10 daily users after week one is an aggregator of zeros. Ezoic and Mediavine raised their thresholds for exactly this reason.
+- Marquee AI newsletters (The Rundown, TLDR, Ben's Bites, Superhuman) sell flat placements at $1,200 to $24,000. Not this market.
+- Top AI directories charge vendors to list ($347 at There's An AI For That, $497 at Futurepedia). Only long-tail directories run on affiliate links.
+- Commission-driven supply is concentrated in small YouTube and blog creators on 20 to 40% recurring programs, earning $2,000 to $10,000 a month at the top. They need a constant stream of new tools to cover. That is the asset vibecoded apps have: novelty.
+- TikTok Shop's affiliate marketplace is the right UX but bans digital goods. Favly is an early link-in-bio storefront for AI and SaaS creators. Nobody owns "browse new apps, grab a link, post, earn" for software.
 
-## 3. Verdict on the raw idea
+### Plumbing is solved
 
-The generic version, "Skimlinks for vibecoded apps", is not worth building. Sovrn already gives it away free and the long tail has no clicks to sell. The pain is genuine, the platforms are not serving it, and the supply side will accept a well-run subnetwork, so there is a version worth testing. It has to be reshaped on three axes.
+- Tracking: pass a reference ID into Stripe Checkout or the MoR's checkout link and read webhooks. Rewardful already publishes a guide for AI-generated sites that says to paste the script into the AI prompt. Coupon codes are the fallback when cookies fail, which is the top HN complaint about Rewardful.
+- Payouts and tax: Stripe Connect covers money transmission and 1099s, the 1099-NEC threshold is $2,000 from 2026, W-8BEN covers non-US creators, EU commissions are reverse-charge VAT.
+- Escrow: Impact makes brands pre-fund, PartnerStack auto-charges a monthly invoice. Pre-funding is the right model for vendors with no track record.
 
-### Reshape 1: pick the vertical where tiny publishers can pay
+## 3. Verdict
 
-SaaS and dev-tool recommendations. Reasons:
+Worth a cheap test, not yet worth code. The gap is real: no product combines no-code billing integrations, a curated creator supply, escrowed payouts and a sub-$10k MRR vendor. The reason it is empty is also real: tiny bounties on unknown apps produce EPC that creators ignore, and marketplaces of this shape (AppSumo, PartnerStack) have ugly liquidity and trust records. The idea lives or dies on one thing: whether a reshaped offer gets creators in the AI-tools niche to post about unknown apps. Everything else is commodity.
 
-- Vibecoders build tools that recommend tools: stack pickers, "best AI tool for X" finders, prompt libraries, workflow guides, dev-tool directories.
-- SaaS programs pay 20 to 50% recurring with EPC 2 to 5x ecommerce, and they approve easily (PartnerStack welcomes all, Lemon Squeezy Affiliate Hub is open, Rewardful and Tolt programs are self-approved by the vendor).
-- The SaaS affiliate supply is fragmented across PartnerStack, Rewardful, Tolt, FirstPromoter, Refgrow, Affonso, Lemon Squeezy Hub with no unified publisher API. That is an actual aggregation gap that Sovrn and Skimlinks do not cover well.
-- Amazon is not needed for this vertical, so the biggest policy conflict disappears.
+### Reshape 1: the offer, not just the split
 
-Travel and finance are the second and third verticals, both with open networks (Booking, Expedia, card CPA programs on Impact and CJ) and natural fit with the trip planners and calculators vibecoders already build.
+Platform-enforced offer floor so every listing clears the EPC bar:
 
-### Reshape 2: integration is a prompt, not an API
+- 100% of the first month with a $25 minimum bounty, or bounty plus 20% for months 2 to 6.
+- Paid after the second renewal clears. This one rule handles refunds, chargebacks within the usual window, and the most common fraud, which is the creator subscribing through their own link for a free month. It also means the vendor only ever pays for retained customers. Creators already accept 30 to 90 day holds.
+- Vendor pre-funds a balance (say $100, four bounties) before the listing goes live. No balance, no listing. This is the trust the publisher side keeps asking for.
+- 60-day cookie plus a creator-specific coupon code as attribution fallback. Coupon codes double as a small discount the creator can advertise.
 
-ChatAds' pivot is the lesson. The product surface is:
+### Reshape 2: sell novelty to creators, not just money
 
-- A paste-in prompt for Lovable, Bolt, Base44 and Replit: "Add monetized recommendations to this app using <platform>." The prompt installs one script tag or one server helper.
-- An MCP server so that Cursor, Claude Code and Replit Agent can add it during the build.
-- A template or Lovable-style starter for the three highest-intent shapes: directory, comparison tool, planner.
-- Disclosure text and placement injected by the SDK, not left to the builder, so the aggregator's FTC and DSA exposure is controlled centrally.
+Creators who cover AI tools have a content problem: they need new tools every week. Position the supply side as "new apps to feature this week, with a bounty attached", closer to a press list than an affiliate network. Every listing includes a demo video, a one-paragraph angle, screenshots and a free creator account. That is cheap for the vendor and it is what a small YouTuber actually needs to make a video.
 
-### Reshape 3: distribution through the platforms, not one builder at a time
+### Reshape 3: ride the MoRs and builders for distribution
 
-VigLink got to 500M monthly clicks through vBulletin, not sign-ups. AdMob was bought because it was inside the apps. The equivalent here is becoming the "Monetize" tab in Lovable or Base44, or at minimum a listed integration and template. AdSense was their most requested unshipped feature, which is the opening line of that conversation. This is also the only real moat: anyone can register with Impact and Awin.
+Creem, Polar and Dodo have the vibecoder audience and affiliate features with no marketplace. Lovable and Base44 run their own $100-per-subscriber bounty programs and understand the mechanic. The distribution play is to be the marketplace layer they link to from their "affiliates" tab, the way Affonso is the software layer under Creem, Polar and Dodo. Note that Affonso itself now lists an affiliate marketplace, which makes it both a channel and a competitor.
 
 ## 4. Riskiest assumptions, in order
 
-1. **Enough vibecoded apps have any outbound-click volume at all.** Everything else is moot if the median live app has under 100 visitors a month. This is the first thing to measure and the most likely killer.
-2. **Networks will approve a subnetwork whose sub-publishers are AI-built apps with no editorial site.** Sovrn and Awin look open on paper; Skimlinks explicitly rejects this profile. Needs a real application, not a reading of the terms.
-3. **Builders will accept a 25 to 35% cut over ChatAds' bring-your-own model.** Only true for builders who cannot get approved themselves or will not do the work. That is probably most of them, but unproven.
-4. **A pasted prompt reliably produces a working, compliant integration across Lovable, Bolt and Base44.** Vibecoded Stripe integrations leak secret keys and lose 15% of webhooks. Ours has to survive the same hands.
-5. **Fraud and hallucination can be contained.** One app inventing product claims or one builder running click bots ends the master account. Requires per-app kill switches, click quality monitoring, and staged trust.
-6. **The platforms will not build this themselves.** Replit already has payments and an agent marketplace. If Lovable ships a monetize tab, an independent middleman is a feature.
+1. **Creators in the AI-tools niche will post about an unknown app for a $25 to $50 bounty.** Everything depends on this. It is testable in two weeks by hand.
+2. **Enough vibecoded apps have paying subscribers and landing pages that convert.** If click-to-paid is under 1%, no offer design saves the EPC. The V1 must recruit vendors with proof of at least a handful of paying users.
+3. **Vibecoders will pre-fund $100 and accept a $25 floor.** They are used to "free" affiliate software. The pre-fund is the trust mechanism, so it cannot be dropped.
+4. **Self-referral and coupon leakage can be contained by the pay-after-second-renewal rule.** Fraud on tiny apps is dominated by self-referrals, which the rule kills, but coupon scraping and brand bidding need per-creator terms and a kill switch.
+5. **A pasted prompt reliably adds the reference ID to Lovable, Base44 and Bolt checkouts.** Rewardful's AI-site guide suggests yes. Unverified across builders and across MoR checkout links.
+6. **The platforms will not build this themselves.** Lovable already has a Launched showcase and its own affiliate program. If Lovable ships "get creators to promote your app", this is a feature.
 
 ## 5. Validation plan
 
-Stage machine: V1 survey, V2 painted door, then build with users. Budget stays locked until V1 clears.
+Stage machine: V1 two-sided interviews plus a concierge pilot, V2 painted door for vendors, then build. Budget stays locked until V1 clears.
 
-### V1: survey and interviews (2 weeks, about €200)
+### V1a: creator interviews (2 weeks, about €150 in gift cards)
 
-Target 150 survey responses and 15 calls with builders who have a deployed app. Recruit in r/lovable, r/vibecoding, r/SideProject, Lovable and Base44 Discords, madewithlovable.com listings.
+Recruit 15 creators with 1k to 50k followers who cover AI tools: YouTube, TikTok link-in-bio, Substack, Discord owners. Sources: Favly storefronts, "AI tools" YouTube search, Passionfroot creator pages, madewithlovable-style directories.
 
-Ask, in this order:
+Ask:
+- Which affiliate programs they run now and what they earn per referral.
+- What they would need to feature an app they have never heard of: minimum bounty, materials, free access, payout terms.
+- Whether "new apps this week with a bounty" is something they would open.
 
-- Is the app live and what did it get in the last 30 days (visitors, if they know, and evidence such as an analytics screenshot).
-- Does the app recommend or link to any product, tool, service or place today.
-- Have they tried AdSense, Amazon Associates or any affiliate program, and what happened.
-- Would they add a monetized recommendation layer if it took one prompt and they kept 70%.
-- What monthly payout would make it feel worth keeping the app alive.
+Kill if fewer than 5 of 15 say they would post for a $25 to $50 bounty with pre-funded escrow.
 
-Kill if fewer than 15% of respondents with a live app report more than 500 monthly visitors and recommendation intent, or if fewer than 40% of those say yes to the 70% split. Iterate if intent is high but traffic is low: the product becomes traffic plus monetization (templates, SEO scaffolding), a different and bigger bet.
+### V1b: vendor interviews (2 weeks, in parallel)
 
-### V1 in parallel: supply test (2 weeks, €5 in deposits)
+Recruit 15 builders with a live subscription app and at least 5 paying customers. Sources: Lovable Launched, Base44 showcase, Indie Hackers, r/lovable, r/vibecoding, X.
 
-Apply as a subnetwork to Sovrn Commerce, Awin, Impact, PartnerStack and Rakuten, describing the sub-publisher profile honestly as AI-built web apps. Record acceptance, conditions and any explicit prohibitions. Kill if neither Sovrn nor Awin nor Impact accepts the profile.
+Ask:
+- Current MRR, price point, free-to-paid rate if known.
+- What they have tried for distribution and what it cost.
+- Whether they would pre-fund $100 and pay 100% of month one plus a $25 floor for a retained subscriber.
 
-### V2: painted door (3 weeks, about €500 in ads and tooling)
+Kill if fewer than 5 of 15 with real paying users say yes to the pre-fund.
 
-Landing page: "Add affiliate income to your Lovable or Bolt app with one prompt. You keep 70%." Waitlist requires the app URL. Two creatives, one on the "no network approvals" promise, one on the "one prompt" promise. Drive from the same communities plus a small paid test.
+### V1c: concierge pilot (3 weeks, about €300)
 
-Measure: visitor to waitlist rate, the traffic distribution of the submitted app URLs (estimated via a third-party traffic tool, plus a follow-up email asking for a screenshot), and the vertical mix of submitted apps.
+No platform. A spreadsheet, Stripe promo codes per creator, and manual payouts by Wise. Take the 5 best vendors and the 10 most willing creators from the interviews and run real offers for 3 weeks.
 
-Kill if waitlist conversion is under 3% across both creatives, or if fewer than 10% of submitted apps show any measurable traffic. Pass if 25 or more apps with measurable traffic and recommendation intent sign up, which is enough for a hand-run pilot.
+Measure per creator: did they post, clicks, sign-ups, paid conversions, and the implied EPC. Measure per vendor: conversions, second-renewal survival, refund rate.
 
-### Pilot before any code beyond a script tag
+Kill if fewer than 30% of creators post, or if blended EPC is under $0.50. Pass if 3 or more creators post, 10 or more paid conversions land, and blended EPC clears $0.50. This pilot is the whole test. The interviews just pick who is in it.
 
-Hand-run 10 to 20 apps through Sovrn's existing API and PartnerStack links under our master account, with a shared spreadsheet as the dashboard. Pay out manually. This proves clicks, commission and network tolerance before building a platform.
+### V2: painted door for vendors (2 weeks, about €400)
+
+Landing page: "Get creators to promote your Lovable app. You pay only when someone stays subscribed." Waitlist asks for app URL, billing provider, MRR band and a yes or no on pre-funding $100. Two creatives, one on "creators, not affiliates" and one on "pay only for retained subscribers".
+
+Kill if waitlist conversion is under 3% or if fewer than 20% of sign-ups say yes to pre-funding. Pass if 30 or more vendors with a live paid app and a yes on pre-funding.
 
 ## 6. Business model sketch
 
-- Take 30% of commission, drop to 20% above a monthly threshold. Anchor is Skimlinks and Sovrn at 25%; the premium buys approval, compliance and payout floors. Above 40% loses to ChatAds for any builder who can get approved alone.
-- Pay builders net 60 after the network pays us. Sovrn pays at 90 days, which means we either float payouts or mirror the delay. Mirror it at first.
-- Minimum payout €20 to avoid fee drag on Wise or Stripe Connect transfers.
-- Secondary revenue if traffic proves to be the real product: paid templates and SEO scaffolding, sold to the same builders.
+- Take 25% of each bounty, dropping to 15% for vendors above $5k a month in bounties. Anchor is the 20 to 30% networks charge when they supply the affiliates, versus 2 to 5% for pure tooling. On a $25 bounty that is $6.25.
+- Vendor pre-funded balance, auto-topped-up by card. Platform pays creators net 30 after the second renewal via Stripe Connect, $50 minimum payout, batched monthly.
+- Optional paid boost: a listing fee to be featured to the top creators, the model There's An AI For That and Futurepedia already prove vendors accept.
+- Revenue reality check: $10k a month of platform revenue at $6 per bounty needs about 1,700 retained conversions a month across the network. That is a few hundred active listings with working funnels. This is a volume business or it is a small one.
 
-## 7. Compliance guardrails baked in from day one
+## 7. Compliance guardrails from day one
 
-- FTC 2023 Endorsement Guides: disclosure before the link, near the top, not just the words "affiliate link". The SDK renders the disclosure. EU DSA article 26 requires real-time commercial communication labelling.
-- No Amazon in version one. Web apps are not "approved mobile applications" and the generative-AI clause is unresolved.
-- Google Play and Apple both reject apps whose primary purpose is affiliate traffic. Web apps only at first, no app store distribution.
-- Per-app kill switch, click velocity limits, and a review gate before an app's links go live. Networks hold us responsible for every sub-publisher.
-- Server-side click tracking and postbacks owned by us, since cookie attribution is dying and tiny apps cannot do it.
+- FTC 2023 Endorsement Guides: creators must disclose, brands can be held liable, and the penalty is $53,088 per violation. Disclosure text is part of every creative kit and the terms.
+- Money movement through Stripe Connect as the platform, so the agent-of-payee question is Stripe's licence, not ours. W-9 and W-8BEN collected at creator onboarding.
+- No brand bidding, no coupon sites, no incentivised sign-ups, per-creator kill switch, and bounties reversed on refund within the hold window.
+- Vendor terms: 60-day notice before closing a program, pre-funded balance covers open bounties, which is the exact failure creators have been burned by.
 
 ## 8. Open questions for the operator
 
-1. Do you want to test this as a standalone product or as a pitch to Lovable or Base44 for their monetize tab? The V2 door tests the former; the latter is one cold email to their partnerships team and costs nothing.
-2. Are you willing to be the legal counterparty on network agreements, with the fraud liability that implies? That is the middleman's actual job.
-3. Should the first vertical be SaaS and dev tools (best economics, smaller audience) or travel (bigger audience, weaker EPC)?
+1. The $25 floor excludes $5 to $15 apps unless the vendor tops up above 100% of month one. Is that acceptable, or should the floor be lower and the recurring component mandatory instead?
+2. Are you willing to hold vendor funds and be the counterparty to creators? That is the platform's actual job and the reason the incumbents charge 20 to 30%.
+3. Standalone product first, or pitch Creem, Polar or Dodo as their marketplace layer before building anything?
 
 ## 9. Next actions
 
-1. Pull 5 to 6 verbatim Reddit threads from r/lovable and r/vibecoding on monetization to replace the snippet quotes in `research/demand-side.md`.
-2. Draft the V1 survey and post it. Book the first five calls.
-3. Submit the five network applications with an honest sub-publisher description.
-4. Reserve a name and write the V2 landing page copy for the two creatives.
-5. Send one email to Lovable partnerships referencing the AdSense request backlog.
+1. Pull verbatim r/lovable, r/vibecoding and r/microsaas threads on "finding affiliates" and "influencers ignore my app" to replace the snippet quotes in `research/vendor-side.md`.
+2. Build the creator and vendor recruit lists (15 each) and the two interview scripts.
+3. Draft the offer terms one-pager: floor, hold, pre-fund, cookie, coupon, disclosure.
+4. Set up the concierge kit: spreadsheet, Stripe promo-code recipe, Wise payout flow, creative-kit template.
+5. One email each to Creem and Polar partnerships describing the marketplace layer.
+
+## Appendix: the direction this replaced
+
+The first pass on 2026-09-02 researched the reverse framing, where the vibecoded app earns commissions by linking out to other merchants. It is filed under `research/app-as-publisher/`. Verdict there was not to build: Sovrn already gives that away and the long tail has no clicks to sell.
