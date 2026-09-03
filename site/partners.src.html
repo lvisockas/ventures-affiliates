@@ -58,6 +58,32 @@ section.tint{background:var(--bg-2)}
 .sec-head.center{align-items:center;text-align:center}
 .sec-head.center .lede{text-align:center}
 
+
+/* payout receipts (social proof) */
+.receipts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.receipt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:12px;position:relative}
+.receipt .head{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-3)}
+.receipt .paid{display:inline-flex;align-items:center;gap:5px;color:var(--paid);font-weight:700;background:var(--paid-soft);border-radius:999px;padding:2px 8px}
+.receipt .paid svg{width:12px;height:12px}
+.receipt .amt{font-size:30px;font-weight:800;letter-spacing:-0.03em;line-height:1}
+.receipt .who{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line)}
+.receipt .ava{width:34px;height:34px;border-radius:50%;flex:none;filter:blur(4px)}
+.receipt .name{font-weight:700;filter:blur(5px);user-select:none;pointer-events:none}
+.receipt .chan{font-size:12px;color:var(--ink-3)}
+.receipt ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--ink-2)}
+.receipt li{display:flex;justify-content:space-between;gap:10px}
+.receipt li span:last-child{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.receipt li.bonus span{color:var(--purple-deep)}
+.receipt .first{position:absolute;top:-10px;right:14px;background:var(--lime);color:var(--lime-ink);font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.receipts-note{margin-top:16px;font-size:13px;color:var(--ink-3);text-align:center}
+@media (max-width:1000px){.receipts{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.receipts{grid-template-columns:1fr}}
+.bonus-bar{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:18px;box-shadow:var(--shadow)}
+.bonus-bar .big{font-size:34px;font-weight:800;letter-spacing:-0.03em;color:var(--purple-deep);flex:none}
+.bonus-bar p{color:var(--ink-2);font-size:15px}
+.bonus-bar b{color:var(--ink)}
+@media (max-width:700px){.bonus-bar{flex-direction:column;align-items:flex-start}}
+
 /* how it works */
 .steps{display:flex;flex-direction:column;gap:56px}
 .step{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:center}
@@ -170,6 +196,20 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
   <div class="shot-hero"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/offers</span></div><img src="{{shot:offers}}" width="1280" height="800" alt="The Gildium partner dashboard: this week's funded offers, each with its bounty type, amount and a ready creative kit"></div></div>
 </div>
 <div class="after-hero" style="background:var(--bg)"></div>
+
+<section id="payouts" class="tint" style="padding-top:72px;padding-bottom:72px">
+  <div class="wrap">
+    <div class="sec-head center"><span class="eyebrow">Partner payouts</span><h2>What partners actually got paid</h2><p class="lede">Names and faces blurred at partners' request. Every line is a bounty that cleared its hold and went out on the 1st.</p></div>
+    <div class="receipts">
+      <div class="receipt"><div class="head"><span>Paid Aug 1, 2026</span><span class="paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Paid</span></div><div class="amt">$298.00</div><div class="who"><div class="ava" style="background:linear-gradient(135deg,#F4A261,#E76F51)"></div><div><div class="name">Daniela Ruiz</div><div class="chan">YouTube · 18k subscribers</div></div></div><ul><li><span>9 × Postsie, retained subscriber</span><span>$225.00</span></li><li><span>2 × Ownloop, retained subscriber</span><span>$58.00</span></li><li><span>1 × Postbee, paid subscriber</span><span>$15.00</span></li></ul></div>
+      <div class="receipt"><span class="first">First payout</span><div class="head"><span>Paid Aug 1, 2026</span><span class="paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Paid</span></div><div class="amt">$149.00</div><div class="who"><div class="ava" style="background:linear-gradient(135deg,#7C5CFA,#2F5D8C)"></div><div><div class="name">Tomas Bergström</div><div class="chan">Newsletter · 6k readers</div></div></div><ul><li><span>4 × 8legs, retained subscriber</span><span>$100.00</span></li><li class="bonus"><span>Sign-up bonus, unlocked by first bounty</span><span>$49.00</span></li></ul></div>
+      <div class="receipt"><div class="head"><span>Paid Jul 1, 2026</span><span class="paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Paid</span></div><div class="amt">$74.00</div><div class="who"><div class="ava" style="background:linear-gradient(135deg,#1F9D5E,#C8F542)"></div><div><div class="name">Aisha Mbeki</div><div class="chan">TikTok · 41k followers</div></div></div><ul><li><span>2 × Postsie, retained subscriber</span><span>$50.00</span></li><li><span>1 × Postbee, paid subscriber</span><span>$15.00</span></li><li><span>3 × Demilked, completed audit</span><span>$9.00</span></li></ul></div>
+      <div class="receipt"><div class="head"><span>Paid Jul 1, 2026</span><span class="paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Paid</span></div><div class="amt">$124.00</div><div class="who"><div class="ava" style="background:linear-gradient(135deg,#D64545,#B7791F)"></div><div><div class="name">Jonas Petraitis</div><div class="chan">YouTube + newsletter</div></div></div><ul><li><span>3 × Postsie, retained subscriber</span><span>$75.00</span></li><li><span>1 × 8legs, retained subscriber</span><span>$25.00</span></li><li><span>1 × Postbee, paid subscriber</span><span>$15.00</span></li><li><span>3 × Demilked, completed audit</span><span>$9.00</span></li></ul></div>
+    </div>
+    <p class="receipts-note">Sample payouts in the pilot format. They are replaced by the first cohort's real statements as they clear.</p>
+    <div class="bonus-bar"><div class="big">$49</div><p><b>Sign-up bonus for every new partner.</b> It unlocks the moment your first bounty becomes payable and goes out in the same transfer. One retained subscriber is all it takes, so your first payout is at least $74.</p></div>
+  </div>
+</section>
 
 <section id="how">
   <div class="wrap">
