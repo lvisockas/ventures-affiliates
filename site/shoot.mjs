@@ -1,6 +1,6 @@
 import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
 import path from 'node:path';
-const here = path.resolve('site');
+const here = path.dirname(new URL(import.meta.url).pathname);
 const pages = ['offers','offer','links','earnings','payouts'];
 const proxy = process.env.HTTPS_PROXY || process.env.https_proxy;
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'], proxy: proxy ? { server: proxy } : undefined });
