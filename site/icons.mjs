@@ -19,7 +19,7 @@ export function applyIcons(html) {
   return html.replace(/<div class="mark" data-icon="([\w-]+)"([^>]*)>([^<]*)<\/div>/g, (m, slug, attrs, letter) => {
     const src = iconFor(slug);
     if (!src) return m;
-    return `<div class="mark" data-icon="${slug}"${attrs}>${letter}<img src="${src}" alt="" loading="lazy" onload="this.parentNode.classList.add('has-icon')" onerror="this.remove()"></div>`;
+    return `<div class="mark" data-icon="${slug}"${attrs}>${letter}<img src="${src}" alt="" onerror="this.remove()"></div>`;
   });
 }
 export function logoSvg(cls = '') {
