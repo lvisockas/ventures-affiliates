@@ -10,8 +10,11 @@ const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, d
 for (const p of pages) {
   const page = await ctx.newPage();
   let html = fs.readFileSync(path.join(here, 'prototype', p + '.html'), 'utf8');
-  html = applyIcons(html).replace(/\{\{logo\}\}/g, logoSvg()).replace('<head>', '<head><base href="file://' + path.join(here, 'prototype') + '/">');
-  await page.setContent(html, { waitUntil: 'load' });
+  html = applyIcons(html).replace(/\{\{logo\}\}/g, logoSvg());
+  const tmp = path.join(here, 'prototype', `.shoot-${p}.html`);
+  fs.writeFileSync(tmp, html);
+  await page.goto('file://' + tmp, { waitUntil: 'load' });
+  fs.unlinkSync(tmp);
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(800);
   const ok = await page.evaluate(() => [...document.fonts].filter(f=>f.status==='loaded').length);
