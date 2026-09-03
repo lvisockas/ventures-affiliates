@@ -1,0 +1,33 @@
+name: Fetch product icons
+
+# Downloads each product's favicon into site/icons/ and commits the files,
+# so the dashboard screenshots can embed them. Run it from the Actions tab
+# whenever a product's icon changes.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download icons
+        run: |
+          mkdir -p site/icons
+          fetch() { curl -sSL --fail --retry 3 -o "site/icons/$1.png" "$2" && echo "ok $1 $(stat -c %s site/icons/$1.png) bytes"; }
+          fetch postsie  "https://www.google.com/s2/favicons?domain=postsie.com&sz=256"
+          fetch postbee  "https://www.google.com/s2/favicons?domain=postbee.ai&sz=256"
+          fetch 8legs    "https://www.google.com/s2/favicons?domain=8legs.app&sz=256"
+          fetch demilked "https://www.google.com/s2/favicons?domain=demilked.com&sz=256"
+          fetch ownloop  "https://ownloop.io/icon.png?7ce05029554421e1"
+          file site/icons/*.png
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/icons
+          git diff --cached --quiet && echo "no changes" || git commit -m "icons: refresh product favicons"
+          git push

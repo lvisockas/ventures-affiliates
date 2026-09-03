@@ -6,14 +6,19 @@ import fs from 'node:fs';
 import path from 'node:path';
 const here = path.dirname(new URL(import.meta.url).pathname);
 const MIME = { svg: 'image/svg+xml', png: 'image/png', ico: 'image/x-icon', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp' };
-const DOMAINS = { postsie: 'postsie.com', postbee: 'postbee.ai', '8legs': '8legs.app', ownloop: 'ownloop.io', demilked: 'demilked.com' };
+const REMOTE = {
+  postsie: 'https://www.google.com/s2/favicons?domain=postsie.com&sz=128',
+  postbee: 'https://www.google.com/s2/favicons?domain=postbee.ai&sz=128',
+  '8legs': 'https://www.google.com/s2/favicons?domain=8legs.app&sz=128',
+  ownloop: 'https://ownloop.io/icon.png?7ce05029554421e1',
+  demilked: 'https://www.google.com/s2/favicons?domain=demilked.com&sz=128',
+};
 export function iconFor(slug) {
   for (const ext of Object.keys(MIME)) {
     const f = path.join(here, 'icons', `${slug}.${ext}`);
     if (fs.existsSync(f)) return `data:${MIME[ext]};base64,${fs.readFileSync(f).toString('base64')}`;
   }
-  const d = DOMAINS[slug];
-  return d ? `https://www.google.com/s2/favicons?domain=${d}&sz=128` : null;
+  return REMOTE[slug] || null;
 }
 export function applyIcons(html) {
   return html.replace(/<div class="mark" data-icon="([\w-]+)"([^>]*)>([^<]*)<\/div>/g, (m, slug, attrs, letter) => {

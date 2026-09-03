@@ -76,7 +76,7 @@ section.tint{background:var(--bg-2)}
 .offer .hd{display:flex;gap:12px;align-items:center}
 .mark{width:42px;height:42px;border-radius:11px;color:#fff;font-weight:800;font-size:18px;display:grid;place-items:center;flex:none;overflow:hidden}
 .mark{position:relative}
-.mark img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box;background:#fff;border:1px solid var(--line);border-radius:inherit;display:block}
+.mark img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff;border-radius:inherit;display:block}
 .offer .kind{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--purple)}
 .offer p{color:var(--ink-2);font-size:15px}
 .offer .amt{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
@@ -165,7 +165,6 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
       <h1>Earn from every product<br>Gildium <span>ships</span></h1>
       <p class="lede">We build apps and media properties and put a funded offer on each one. Feature them on your channels. When your audience subscribes, the first month is yours. Minimum $25, paid once they renew.</p>
       <div class="cta"><a class="btn" href="#apply">Apply for the pilot</a><a class="btn quiet" href="#how">How it works</a></div>
-      <p class="fine">Pilot cohort · ten seats · any network you publish on</p>
     </div>
   </div>
   <div class="shot-hero"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/offers</span></div><img src="{{shot:offers}}" width="1280" height="800" alt="The Gildium partner dashboard: this week's funded offers, each with its bounty type, amount and a ready creative kit"></div></div>
@@ -174,7 +173,7 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
 
 <section id="how">
   <div class="wrap">
-    <div class="sec-head center"><span class="eyebrow">How it works</span><h2>Start earning in five simple steps</h2><p class="lede">Every screen below is the partner dashboard you get on day one. Offers shown are illustrative; the live feed changes every Monday.</p></div>
+    <div class="sec-head center"><span class="eyebrow">How it works</span><h2>Start earning in five simple steps</h2><p class="lede">Every screen below is the partner dashboard you get on day one. The live feed changes every Monday.</p></div>
     <div class="steps">
       <div class="step">
         <div class="txt"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Pick an offer from this week's feed</h3><p>Every Monday we list the offers we funded that week. Some pay 100% of month one, some a flat bounty per paid app subscriber, some a few dollars per confirmed newsletter signup. Each card states the type, the amount and whether the kit is ready. Nothing appears until its bounties are escrowed.</p></div>
@@ -202,7 +201,7 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
 
 <section id="offers" class="tint">
   <div class="wrap">
-    <div class="sec-head center"><span class="eyebrow">Offers</span><h2>This week's funded offers</h2><p class="lede">Three kinds of offer, one dashboard. Amounts below are illustrative; the live feed changes every Monday.</p></div>
+    <div class="sec-head center"><span class="eyebrow">Offers</span><h2>This week's funded offers</h2><p class="lede">Three kinds of offer, one dashboard. The live feed changes every Monday.</p></div>
     <div class="offers">
       <div class="offer"><div class="hd"><div class="mark" data-icon="postsie" style="background:#7C5CFA">P</div><div><h3>Postsie</h3><span class="kind">First-month bounty</span></div></div><p>Run your social media from one dashboard. Schedule to every network from one screen.</p><div class="amt"><b class="num">$25</b><span>per retained subscriber</span></div></div>
       <div class="offer"><div class="hd"><div class="mark" data-icon="postbee" style="background:#2F5D8C">B</div><div><h3>Postbee</h3><span class="kind">Per paid subscriber</span></div></div><p>AI social posts that sound like you, generated on your phone from your own writing.</p><div class="amt"><b class="num">$15</b><span>per paid app subscriber</span></div></div>
