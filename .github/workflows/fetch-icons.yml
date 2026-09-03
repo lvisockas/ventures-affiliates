@@ -5,6 +5,11 @@ name: Fetch product icons
 # whenever a product's icon changes.
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-icons.yml"
+      - "site/icons/.refresh"
 
 permissions:
   contents: write
