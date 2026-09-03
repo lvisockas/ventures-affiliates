@@ -1,5 +1,7 @@
 import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
 import path from 'node:path';
+import fs from 'node:fs';
+import { applyIcons, logoSvg } from './icons.mjs';
 const here = path.dirname(new URL(import.meta.url).pathname);
 const pages = ['offers','offer','links','earnings','payouts'];
 const proxy = process.env.HTTPS_PROXY || process.env.https_proxy;
@@ -7,7 +9,9 @@ const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromi
 const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 2, ignoreHTTPSErrors: true });
 for (const p of pages) {
   const page = await ctx.newPage();
-  await page.goto('file://' + path.join(here, 'prototype', p + '.html'));
+  let html = fs.readFileSync(path.join(here, 'prototype', p + '.html'), 'utf8');
+  html = applyIcons(html).replace(/\{\{logo\}\}/g, logoSvg()).replace('<head>', '<head><base href="file://' + path.join(here, 'prototype') + '/">');
+  await page.setContent(html, { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(800);
   const ok = await page.evaluate(() => [...document.fonts].filter(f=>f.status==='loaded').length);

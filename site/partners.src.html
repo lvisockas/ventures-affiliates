@@ -32,9 +32,8 @@ a{color:inherit}
 /* purple header + hero */
 .sky{background:var(--purple);color:#fff}
 .top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:16px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#fff}
-.brand i{width:24px;height:24px;border-radius:7px;background:#fff;position:relative;display:inline-block}
-.brand i::after{content:"";position:absolute;left:6px;top:6px;width:12px;height:12px;border-radius:50%;border:3px solid var(--purple);border-right-color:transparent;box-sizing:border-box}
+.brand{display:flex;align-items:center;color:#fff;text-decoration:none}
+.brand svg{height:22px;width:auto;display:block}
 .top nav{display:flex;gap:26px;font-size:14px;font-weight:500}
 .top nav a{text-decoration:none;color:rgba(255,255,255,.85)}
 .top nav a:hover{color:#fff}
@@ -60,29 +59,25 @@ section.tint{background:var(--bg-2)}
 .sec-head.center .lede{text-align:center}
 
 /* how it works */
-.how{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.steps{display:flex;flex-direction:column;gap:6px}
-.step{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
-.step:last-child{border-bottom:0}
-.icon{width:40px;height:40px;border-radius:10px;background:var(--lavender-soft);color:var(--purple);display:grid;place-items:center;flex:none}
-.icon svg{width:20px;height:20px}
+.steps{display:flex;flex-direction:column;gap:56px}
+.step{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:center}
+.step:nth-child(even){direction:rtl}
+.step:nth-child(even)>*{direction:ltr}
+.step .txt{display:flex;flex-direction:column;gap:12px}
+.icon{width:44px;height:44px;border-radius:12px;background:var(--lavender-soft);color:var(--purple);display:grid;place-items:center;flex:none}
+.icon svg{width:22px;height:22px}
 .icon.filled{background:var(--purple);color:#fff}
-.step p{color:var(--ink-2);font-size:15px;margin-top:4px}
-.callout{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;font-size:15px;color:var(--ink-2)}
-.callout b{color:var(--ink)}
-.how .frame{position:sticky;top:24px}
-@media (max-width:900px){.how{grid-template-columns:1fr}.how .frame{position:static}}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
-.gallery figure{margin:0;display:flex;flex-direction:column;gap:10px}
-.gallery figcaption{font-size:14px;color:var(--ink-2)}
-.gallery figcaption b{color:var(--ink);display:block}
-@media (max-width:800px){.gallery{grid-template-columns:1fr}}
+.step p{color:var(--ink-2);font-size:15px}
+@media (max-width:900px){.step,.step:nth-child(even){grid-template-columns:1fr;direction:ltr}}
 
 /* offers */
 .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .offer{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px}
 .offer .hd{display:flex;gap:12px;align-items:center}
-.mark{width:42px;height:42px;border-radius:11px;color:#fff;font-weight:800;font-size:18px;display:grid;place-items:center;flex:none}
+.mark{width:42px;height:42px;border-radius:11px;color:#fff;font-weight:800;font-size:18px;display:grid;place-items:center;flex:none;overflow:hidden}
+.mark{position:relative}
+.mark img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box;background:#fff;border:1px solid var(--line);border-radius:inherit;display:none}
+.mark.has-icon img{display:block}
 .offer .kind{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--purple)}
 .offer p{color:var(--ink-2);font-size:15px}
 .offer .amt{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
@@ -132,7 +127,8 @@ section.tint{background:var(--bg-2)}
 .join::before{width:420px;height:420px;right:-120px;top:-160px}
 .join::after{width:260px;height:260px;right:120px;bottom:-140px;opacity:.5}
 .join>*{position:relative;z-index:1}
-.join .brand{margin-bottom:18px;font-size:14px}
+.join .brand{margin-bottom:18px}
+.join .brand svg{height:18px}
 .join h2{color:#fff}
 .join ul{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:rgba(255,255,255,.85);font-size:15px}
 .join li{display:flex;gap:10px;align-items:baseline}
@@ -162,7 +158,7 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
 <div class="sky">
   <div class="wrap">
     <header class="top">
-      <a class="brand" href="#"><i></i>Gildium</a>
+      <a class="brand" href="#">{{logo}}</a>
       <nav><a href="#how">How it works</a><a href="#offers">Offers</a><a href="#terms">Terms</a><a href="#faq">FAQ</a></nav>
       <a class="btn small" href="#apply">Apply</a>
     </header>
@@ -179,24 +175,28 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
 
 <section id="how">
   <div class="wrap">
-    <div class="how">
-      <div>
-        <div class="sec-head"><span class="eyebrow">How it works</span><h2>Start earning in five simple steps</h2></div>
-        <div class="steps">
-          <div class="step"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><div><h3>Pick an offer from this week's feed</h3><p>Every Monday we list the offers we funded that week. Some pay 100% of month one, some a flat bounty per paid iOS subscriber, some a few dollars per confirmed newsletter signup. Nothing appears until its bounties are escrowed.</p></div></div>
-          <div class="step"><div class="icon filled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></div><div><h3>Grab your page, your coupon and the kit</h3><p>You get your own landing page per offer, such as postsie.com/you, with 10% off already applied, a coupon that gives the same discount at checkout, and a tracked link to your page for each network. The kit has the demo video, screenshots, hooks per network and a free creator account.</p></div></div>
-          <div class="step"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="9"/></svg></div><div><h3>Post everywhere you publish</h3><p>A YouTube review, a 30-second TikTok or Reel, a paragraph in your newsletter, a LinkedIn or Threads post, a pinned Discord message. Each network has its own link, so you see which channel converts. Your voice, an honest take, disclosure before the link.</p></div></div>
-          <div class="step"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><div><h3>Watch referrals move from click to renewal</h3><p>Every referral shows by stage: clicked, signed up, paid month one, renewed. A bounty becomes payable the day the second payment clears, about 35 days after signup. A refund inside that window cancels that bounty and nothing else.</p></div></div>
-          <div class="step"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M7 12h.01M17 12h.01"/></svg></div><div><h3>Get one payout for every offer, on the 1st</h3><p>Payable bounties across all offers go out together on the first of the month by Wise or Stripe once they reach $50. Tax form once at signup, PDF statement monthly.</p></div></div>
-        </div>
-        <div class="callout"><div class="icon" style="width:32px;height:32px;border-radius:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div><div><b>Every offer is pre-funded.</b> If we retire a product inside 12 months, bounties you earned are paid from that escrow, not from the product.</div></div>
+    <div class="sec-head center"><span class="eyebrow">How it works</span><h2>Start earning in five simple steps</h2><p class="lede">Every screen below is the partner dashboard you get on day one. Offers shown are illustrative; the live feed changes every Monday.</p></div>
+    <div class="steps">
+      <div class="step">
+        <div class="txt"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Pick an offer from this week's feed</h3><p>Every Monday we list the offers we funded that week. Some pay 100% of month one, some a flat bounty per paid app subscriber, some a few dollars per confirmed newsletter signup. Each card states the type, the amount and whether the kit is ready. Nothing appears until its bounties are escrowed.</p></div>
+        <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/offers</span></div><img src="{{shot:offers}}" width="1280" height="800" alt="Offer feed with five example offers across three bounty types"></div>
       </div>
-      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/offers/postsie</span></div><img src="{{shot:offer}}" width="1280" height="800" alt="Offer detail for Postsie: the creator's landing page with the discount applied, per-network links, coupon, creative kit and offer terms"></div>
-    </div>
-    <div class="gallery">
-      <figure><div class="frame"><img src="{{shot:links}}" width="1280" height="800" alt="My links: one link per network for each offer, subscribers by network, and formats per network"></div><figcaption><b>My links</b>One link per network, and which network your subscribers came from.</figcaption></figure>
-      <figure><div class="frame"><img src="{{shot:earnings}}" width="1280" height="800" alt="Earnings: pending, payable and paid, with each referral by stage"></div><figcaption><b>Earnings</b>Every referral by stage, from click to renewal, with your earnings per click.</figcaption></figure>
-      <figure><div class="frame"><img src="{{shot:payouts}}" width="1280" height="800" alt="Payouts: next payout, history and account settings"></div><figcaption><b>Payouts</b>One transfer a month covering every offer, with statements and tax form on file.</figcaption></figure>
+      <div class="step">
+        <div class="txt"><div class="icon filled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></div><h3>Grab your page, your coupon and the kit</h3><p>You get your own landing page per offer, such as postsie.com/you, with 10% off already applied, a coupon that gives the same discount at checkout, and a tracked link to your page for each network. The kit has the demo video, screenshots, hooks per network, a free creator account and the disclosure text.</p></div>
+        <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/offers/postsie</span></div><img src="{{shot:offer}}" width="1280" height="800" alt="Offer detail for Postsie: the creator's landing page with the discount applied, per-network links, coupon, creative kit and offer terms"></div>
+      </div>
+      <div class="step">
+        <div class="txt"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Post everywhere you publish</h3><p>A YouTube review, a 30-second TikTok or Reel, a paragraph in your newsletter, a LinkedIn or Threads post, a pinned Discord message. Each network has its own link, so you see which channel converts and can double down there. Your voice, an honest take, disclosure before the link.</p></div>
+        <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/links</span></div><img src="{{shot:links}}" width="1280" height="800" alt="My links: one link per network for each offer, subscribers by network, and formats per network"></div>
+      </div>
+      <div class="step">
+        <div class="txt"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3>Watch referrals move from click to renewal</h3><p>Every referral shows by stage: clicked, signed up, paid month one, renewed. A bounty becomes payable the day the second payment clears, about 35 days after signup. A refund inside that window cancels that bounty and nothing else. You never owe money back.</p></div>
+        <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/earnings</span></div><img src="{{shot:earnings}}" width="1280" height="800" alt="Earnings: pending, payable and paid, with each referral by stage"></div>
+      </div>
+      <div class="step">
+        <div class="txt"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M7 12h.01M17 12h.01"/></svg></div><h3>Get one payout for every offer, on the 1st</h3><p>Payable bounties across all offers go out together on the first of the month by Wise or Stripe once they reach $50. Tax form once at signup, PDF statement monthly. Every offer is pre-funded, so if we retire a product inside 12 months, bounties you earned are paid from that escrow.</p></div>
+        <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/payouts</span></div><img src="{{shot:payouts}}" width="1280" height="800" alt="Payouts: next payout, history and account settings"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -205,11 +205,11 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
   <div class="wrap">
     <div class="sec-head center"><span class="eyebrow">Offers</span><h2>This week's funded offers</h2><p class="lede">Three kinds of offer, one dashboard. Amounts below are illustrative; the live feed changes every Monday.</p></div>
     <div class="offers">
-      <div class="offer"><div class="hd"><div class="mark" style="background:#7C5CFA">P</div><div><h3>Postsie</h3><span class="kind">First-month bounty</span></div></div><p>Run your social media from one dashboard. Schedule to every network from one screen.</p><div class="amt"><b class="num">$25</b><span>per retained subscriber</span></div></div>
-      <div class="offer"><div class="hd"><div class="mark" style="background:#2F5D8C">B</div><div><h3>Postbee</h3><span class="kind">Per paid subscriber</span></div></div><p>AI social posts that sound like you, generated on your iPhone from your own writing.</p><div class="amt"><b class="num">$15</b><span>per paid iOS subscriber</span></div></div>
-      <div class="offer"><div class="hd"><div class="mark" style="background:#1F9D5E">8</div><div><h3>8legs</h3><span class="kind">Per newsletter signup</span></div></div><p>Today's must-read news in bites. Daily briefing on the web and by email.</p><div class="amt"><b class="num">$2</b><span>per confirmed signup</span></div></div>
-      <div class="offer"><div class="hd"><div class="mark" style="background:#7B4FA8">O</div><div><h3>Ownloop</h3><span class="kind">First-month bounty</span></div></div><p>Keep the people who found you in a loop you own: list, updates and offers in one place.</p><div class="amt"><b class="num">$29</b><span>per retained subscriber</span></div></div>
-      <div class="offer"><div class="hd"><div class="mark" style="background:#D64545">D</div><div><h3>Demilked</h3><span class="kind">Per newsletter signup</span></div></div><p>Design, art and photography magazine with 11M+ social followers. Daily picks by email.</p><div class="amt"><b class="num">$3</b><span>per confirmed signup</span></div></div>
+      <div class="offer"><div class="hd"><div class="mark" data-icon="postsie" style="background:#7C5CFA">P</div><div><h3>Postsie</h3><span class="kind">First-month bounty</span></div></div><p>Run your social media from one dashboard. Schedule to every network from one screen.</p><div class="amt"><b class="num">$25</b><span>per retained subscriber</span></div></div>
+      <div class="offer"><div class="hd"><div class="mark" data-icon="postbee" style="background:#2F5D8C">B</div><div><h3>Postbee</h3><span class="kind">Per paid subscriber</span></div></div><p>AI social posts that sound like you, generated on your phone from your own writing.</p><div class="amt"><b class="num">$15</b><span>per paid app subscriber</span></div></div>
+      <div class="offer"><div class="hd"><div class="mark" data-icon="8legs" style="background:#1F9D5E">8</div><div><h3>8legs</h3><span class="kind">Per newsletter signup</span></div></div><p>Today's must-read news in bites. Daily briefing on the web and by email.</p><div class="amt"><b class="num">$2</b><span>per confirmed signup</span></div></div>
+      <div class="offer"><div class="hd"><div class="mark" data-icon="ownloop" style="background:#7B4FA8">O</div><div><h3>Ownloop</h3><span class="kind">First-month bounty</span></div></div><p>Keep the people who found you in a loop you own: list, updates and offers in one place.</p><div class="amt"><b class="num">$29</b><span>per retained subscriber</span></div></div>
+      <div class="offer"><div class="hd"><div class="mark" data-icon="demilked" style="background:#D64545">D</div><div><h3>Demilked</h3><span class="kind">Per newsletter signup</span></div></div><p>Design, art and photography magazine with 11M+ social followers. Daily picks by email.</p><div class="amt"><b class="num">$3</b><span>per confirmed signup</span></div></div>
       <div class="offer more"><h3>Two more land Monday</h3><p>New offers every week. Partners get them by email first.</p></div>
     </div>
   </div>
@@ -224,7 +224,7 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
       <div class="tile"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Funded before you post</h3><p>Every offer is escrowed. If a product is retired, earned bounties are still paid.</p></div>
       <div class="tile"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Per-network analytics</h3><p>One link per network, so you know whether YouTube, TikTok or your newsletter converts.</p></div>
       <div class="tile"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="m3 9 9 5 9-5"/></svg></div><h3>Ready-made kits</h3><p>Demo video, screenshots, hooks per network, a free creator account and disclosure text.</p></div>
-      <div class="tile"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-8-8"/><path d="M20 4v5h-5"/></svg></div><h3>New offers every week</h3><p>Apps, iOS apps and media properties. Fresh material for your channel, with a bounty attached.</p></div>
+      <div class="tile"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-8-8"/><path d="M20 4v5h-5"/></svg></div><h3>New offers every week</h3><p>Apps and media properties. Fresh material for your channel, with a bounty attached.</p></div>
     </div>
   </div>
 </section>
@@ -235,7 +235,7 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
     <div class="terms">
       <div class="rows">
         <div><span>First-month bounty</span><span>100% of month one, floor $25</span></div>
-        <div><span>Per paid subscriber</span><span>flat amount per paid app-store subscriber</span></div>
+        <div><span>Per paid subscriber</span><span>flat amount per paid app subscriber</span></div>
         <div><span>Per newsletter signup</span><span>flat amount per confirmed signup, paid after 30 days</span></div>
         <div><span>Audience discount</span><span>10% off month one, via your page or your coupon</span></div>
         <div><span>Attribution</span><span>your landing page, 60-day link per network, or your coupon</span></div>
@@ -274,7 +274,7 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
   <div class="wrap">
     <div class="join">
       <div>
-        <div class="brand"><i></i>Gildium</div>
+        <div class="brand">{{logo}}</div>
         <h2>Who can join?</h2>
         <ul>
           <li>You cover software, AI tools, productivity, design or small-business topics.</li>
