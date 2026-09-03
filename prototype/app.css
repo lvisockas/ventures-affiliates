@@ -48,6 +48,8 @@ h1{font-size:24px;font-weight:700;margin:0;letter-spacing:-0.02em}
 .pill.paid{background:var(--paid-soft);color:var(--paid)}
 .pill.bad{background:var(--bad-soft);color:var(--bad)}
 .pill.sub{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
+.pill.limited{background:var(--hold-soft);color:var(--hold)}
+.pill.ever{background:var(--paid-soft);color:var(--paid)}
 .two{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:14px}
 .panel h2{margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}

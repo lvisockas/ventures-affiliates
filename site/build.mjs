@@ -8,7 +8,7 @@ body = body.replace(/\{\{shot:(\w+)\}\}/g, (_, name) => {
   const b64 = fs.readFileSync(path.join(here, 'shots', name + '.png')).toString('base64');
   return 'data:image/png;base64,' + b64;
 });
-body = applyIcons(body).replace(/\{\{logo\}\}/g, logoSvg());
+body = applyIcons(body).replace(/\{\{logo_dark\}\}/g, logoSvg()).replace(/\{\{logo\}\}/g, logoSvg());
 // Artifact fragment: the artifact host supplies the document skeleton.
 fs.writeFileSync(path.join(here, 'partners.html'), body);
 // Standalone document at the repo root, served by GitHub Pages from main.
