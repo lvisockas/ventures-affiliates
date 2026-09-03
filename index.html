@@ -40,31 +40,39 @@ a{color:inherit}
 
 
 /* hero flow */
-.flow{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px;display:grid;grid-template-columns:1.1fr auto 1.2fr auto 1.1fr;gap:12px;align-items:center;color:var(--ink);text-align:left}
+.flow{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px;display:grid;grid-template-columns:minmax(0,1.1fr) 96px minmax(0,1.2fr) 96px minmax(0,1.1fr);gap:12px;align-items:start;color:var(--ink);text-align:left}
 .node{display:flex;flex-direction:column;gap:10px;min-width:0}
-.nlabel{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.nlabel{display:flex;align-items:center;gap:8px;min-height:18px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .nlabel svg{height:14px;width:auto;color:var(--ink)}
-.mini{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
-.mrow{display:flex;align-items:center;gap:9px}
+.mini{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mrow{display:flex;align-items:center;gap:9px;min-width:0}
 .mrow .mark{width:30px;height:30px;border-radius:8px;font-size:13px}
 .mrow b{display:block;font-size:14px;line-height:1.2}
 .mrow small{font-size:11px;color:var(--ink-3)}
 .mlink{font-size:11px;color:var(--purple-deep);background:var(--lavender-soft);border-radius:6px;padding:4px 8px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .netgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.netgrid div{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;background:var(--bg-2);border:1px solid var(--line);border-radius:9px;padding:7px 9px;white-space:nowrap}
+.netgrid div{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;background:var(--bg-2);border:1px solid var(--line);border-radius:9px;padding:7px 9px;white-space:nowrap;min-width:0;overflow:hidden}
 .netgrid i{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
-.cashamt{font-size:26px;font-weight:800;letter-spacing:-0.03em;color:var(--ink)}
-.cashamt em{font-style:normal;font-size:12px;font-weight:700;color:var(--paid);background:var(--paid-soft);border-radius:999px;padding:2px 8px;vertical-align:middle;margin-left:4px}
+.cashamt{font-size:26px;font-weight:800;letter-spacing:-0.03em;color:var(--ink);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cashamt em{font-style:normal;font-size:12px;font-weight:700;color:var(--paid);background:var(--paid-soft);border-radius:999px;padding:2px 8px;letter-spacing:0}
 .cline{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--ink-2)}
-.cline span:last-child{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.cline span:last-child{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
 .cline.bonus span{color:var(--purple-deep)}
-.arrow{position:relative;width:76px;height:44px;display:flex;align-items:center}
-.arrow::before{content:"";position:absolute;left:0;right:10px;top:50%;height:0;border-top:2px dashed var(--purple);animation:dash 1.2s linear infinite}
-.arrow::after{content:"";position:absolute;right:2px;top:50%;width:10px;height:10px;border-top:2px solid var(--purple);border-right:2px solid var(--purple);transform:translateY(-50%) rotate(45deg)}
-.arrow span{position:absolute;left:50%;top:-4px;transform:translate(-50%,-100%);font-size:10px;font-weight:700;color:var(--purple-deep);white-space:nowrap;letter-spacing:.02em}
-@keyframes dash{from{background-position:0 0}to{background-position:0 0}}
-@media (prefers-reduced-motion:reduce){.arrow::before{animation:none}}
-@media (max-width:900px){.flow{grid-template-columns:1fr}.arrow{width:100%;height:56px;justify-content:center}.arrow::before{left:50%;right:auto;top:8px;bottom:18px;height:auto;width:0;border-top:0;border-left:2px dashed var(--purple)}.arrow::after{right:auto;left:50%;top:auto;bottom:14px;transform:translateX(-50%) rotate(135deg)}.arrow span{top:50%;left:calc(50% + 14px);transform:translateY(-50%)}}
+/* the caption is in normal flow so it can never spill over the neighbouring panels */
+.arrow{align-self:center;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;padding-top:28px}
+.arrow span{font-size:10px;font-weight:700;color:var(--purple-deep);letter-spacing:.02em;line-height:1.3;text-align:center;text-wrap:balance}
+.arrow i{position:relative;display:block;width:100%;height:12px}
+.arrow i::before{content:"";position:absolute;left:0;right:8px;top:50%;border-top:2px dashed var(--purple)}
+.arrow i::after{content:"";position:absolute;right:2px;top:50%;width:9px;height:9px;border-top:2px solid var(--purple);border-right:2px solid var(--purple);transform:translateY(-50%) rotate(45deg)}
+@media (max-width:900px){
+  .flow{grid-template-columns:1fr;padding:18px;gap:14px}
+  .netgrid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+  .arrow{width:100%;gap:4px;padding-top:0}
+  .arrow span{font-size:11px}
+  .arrow i{width:12px;height:34px}
+  .arrow i::before{left:50%;right:auto;top:0;bottom:8px;border-top:0;border-left:2px dashed var(--purple)}
+  .arrow i::after{right:auto;left:50%;top:auto;bottom:2px;transform:translateX(-50%) rotate(135deg)}
+}
 
 /* purple header + hero */
 .sky{background:var(--purple);color:#fff}
@@ -80,14 +88,15 @@ a{color:inherit}
 .hero .lede{color:rgba(255,255,255,.88);font-size:17px}
 .hero .fine{font-size:13px;color:rgba(255,255,255,.75)}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.shot-hero{margin:36px auto -120px;max-width:1040px;padding:0 24px}
+.shot-hero{margin:36px auto -120px;max-width:1120px;padding:0 24px}
 .frame{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
 .frame .bar{display:flex;align-items:center;gap:7px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--bg-2)}
 .frame .bar i{width:9px;height:9px;border-radius:50%;background:var(--line-strong);display:inline-block}
 .frame .bar span{margin-left:8px;font-size:12px;color:var(--ink-3)}
 .frame img{display:block;width:100%;height:auto}
 .after-hero{height:120px;background:var(--purple)}
-@media (max-width:760px){.shot-hero{margin-bottom:-80px}.after-hero{height:80px}}
+@media (max-width:760px){.hero{padding-top:36px;gap:16px}.shot-hero{margin:28px auto -80px;padding:0 16px}.after-hero{height:80px}}
+@media (max-width:480px){.hero .cta{flex-direction:column;width:100%}.hero .cta .btn{width:100%}}
 
 section{padding:88px 0}
 section.tint{background:var(--bg-2)}
@@ -247,7 +256,7 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
 <span>Your dashboard</span></div>
         <div class="mini"><div class="mrow"><div class="mark" data-icon="postsie" style="background:#7C5CFA">P<img src="data:image/png;base64,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" alt="" onerror="this.remove()"></div><div><b>Postsie</b><small>First-month bounty · $25</small></div></div><div class="mlink">gildium.link/you/postsie</div><div class="mrow"><div class="mark" data-icon="8legs" style="background:#1F9D5E">8<img src="data:image/png;base64,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" alt="" onerror="this.remove()"></div><div><b>8legs</b><small>First-month bounty · $25</small></div></div><div class="mlink">gildium.link/you/8legs</div></div>
       </div>
-      <div class="arrow"><span>Your links, coupon and kit</span></div>
+      <div class="arrow"><span>Your links, coupon and kit</span><i></i></div>
       <div class="node nets">
         <div class="nlabel"><span>Your networks</span></div>
         <div class="netgrid">
@@ -261,7 +270,7 @@ footer{padding:28px 0 48px;color:var(--ink-3);font-size:13px;display:flex;justif
           <div><i style="background:#5865F2"></i>Discord</div>
         </div>
       </div>
-      <div class="arrow"><span>Subscribers who stay</span></div>
+      <div class="arrow"><span>Subscribers who stay</span><i></i></div>
       <div class="node cash">
         <div class="nlabel"><span>Back to you</span></div>
         <div class="mini"><div class="cashamt">$74.00 <em>paid</em></div><div class="cline"><span>1 × Postsie, retained subscriber</span><span>$25.00</span></div><div class="cline bonus"><span>Sign-up bonus, first bounty</span><span>$49.00</span></div><div class="cline"><span>Next payout</span><span>on the 1st</span></div></div>
