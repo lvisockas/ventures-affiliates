@@ -1,32 +1,32 @@
-<title>Firstmonth Partners</title>
+<title>Gildium Partners</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 :root{
-  --bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#E9EDF2; --line:#D6DCE4; --line-strong:#B4BEC9;
-  --ink:#14202B; --ink-2:#4E5B68; --ink-3:#7A8794;
-  --accent:#2B4CFF; --accent-ink:#FFFFFF; --accent-soft:#E4E9FF;
+  --bg:#F1F0EB; --surface:#FFFFFF; --surface-2:#E8E6DF; --line:#DAD7CD; --line-strong:#B9B4A6;
+  --ink:#111820; --ink-2:#4F5860; --ink-3:#7B838B;
+  --accent:#B8912F; --accent-ink:#111820; --accent-soft:#F4EBD2;
   --paid:#1F8A5B; --paid-soft:#DFF2E7; --hold:#B7791F; --hold-soft:#FBF0DA;
-  --dark:#14202B; --dark-ink:#E8EDF2; --dark-muted:#98A5B3;
-  --shadow:0 1px 2px rgba(20,32,43,.06),0 12px 32px -12px rgba(20,32,43,.25);
+  --dark:#111820; --dark-ink:#ECE9E1; --dark-muted:#9AA0A6; --gold:#D4B25A;
+  --shadow:0 1px 2px rgba(17,24,32,.06),0 12px 32px -12px rgba(17,24,32,.25);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0E141B; --surface:#161E27; --surface-2:#1D2731; --line:#26323E; --line-strong:#3A4856;
-    --ink:#E8EDF2; --ink-2:#AAB6C2; --ink-3:#7F8C99;
-    --accent:#7D8FFF; --accent-ink:#0E141B; --accent-soft:#1E2748;
+    --bg:#0F1419; --surface:#171D24; --surface-2:#1E252D; --line:#28313A; --line-strong:#3D4751;
+    --ink:#ECE9E1; --ink-2:#B4B9BE; --ink-3:#848C94;
+    --accent:#D4B25A; --accent-ink:#111820; --accent-soft:#2E2914;
     --paid:#5CC492; --paid-soft:#173626; --hold:#E0B060; --hold-soft:#3A2D12;
-    --dark:#0A0F14; --dark-ink:#E8EDF2; --dark-muted:#98A5B3;
+    --dark:#0A0E12; --dark-ink:#ECE9E1; --dark-muted:#9AA0A6; --gold:#D4B25A;
     --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -12px rgba(0,0,0,.6);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0E141B; --surface:#161E27; --surface-2:#1D2731; --line:#26323E; --line-strong:#3A4856;
-  --ink:#E8EDF2; --ink-2:#AAB6C2; --ink-3:#7F8C99;
-  --accent:#7D8FFF; --accent-ink:#0E141B; --accent-soft:#1E2748;
+  --bg:#0F1419; --surface:#171D24; --surface-2:#1E252D; --line:#28313A; --line-strong:#3D4751;
+  --ink:#ECE9E1; --ink-2:#B4B9BE; --ink-3:#848C94;
+  --accent:#D4B25A; --accent-ink:#111820; --accent-soft:#2E2914;
   --paid:#5CC492; --paid-soft:#173626; --hold:#E0B060; --hold-soft:#3A2D12;
-  --dark:#0A0F14; --dark-ink:#E8EDF2; --dark-muted:#98A5B3;
+  --dark:#0A0E12; --dark-ink:#ECE9E1; --dark-muted:#9AA0A6; --gold:#D4B25A;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -12px rgba(0,0,0,.6);
 }
 *{box-sizing:border-box}
@@ -49,8 +49,8 @@ a{color:inherit}
 /* header */
 .top{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
 .brand{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.01em;text-decoration:none}
-.brand i{width:24px;height:24px;border-radius:7px;background:var(--accent);position:relative;display:inline-block}
-.brand i::after{content:"";position:absolute;left:6px;top:6px;width:12px;height:12px;border-radius:3px;background:var(--surface)}
+.brand i{width:24px;height:24px;border-radius:50%;background:var(--accent);position:relative;display:inline-block}
+.brand i::after{content:"";position:absolute;left:7px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--ink)}
 .top nav{display:flex;gap:22px;font-size:15px;color:var(--ink-2)}
 .top nav a{text-decoration:none}
 @media (max-width:700px){.top nav{display:none}}
@@ -84,7 +84,7 @@ section{padding:88px 0}
 .step{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:center}
 .step:nth-child(even){direction:rtl}
 .step:nth-child(even)>*{direction:ltr}
-.step .num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent);font-weight:600;letter-spacing:.08em}
+.step .num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--hold);font-weight:600;letter-spacing:.08em}
 .step .txt{display:flex;flex-direction:column;gap:12px}
 .step .txt p{color:var(--ink-2)}
 .step .txt .note{font-size:14px;color:var(--ink-3);border-left:2px solid var(--line-strong);padding-left:12px}
@@ -101,7 +101,7 @@ section{padding:88px 0}
 .ledger div::after{content:"";flex:1;order:2;border-bottom:1px dotted rgba(255,255,255,.28);transform:translateY(-5px)}
 .ledger div span:last-child{order:3;text-align:right;flex:none;max-width:60%}
 .ledger .total{font-weight:600;font-size:17px;padding-top:18px}
-.ledger .total span:last-child{color:#8FF0BE}
+.ledger .total span:last-child{color:var(--gold)}
 @media (max-width:900px){.ledger-wrap{grid-template-columns:1fr;padding:32px 24px}.ledger div span:last-child{max-width:55%}}
 
 /* worked example */
@@ -156,73 +156,74 @@ footer{padding:32px 0 56px;color:var(--ink-3);font-size:14px;display:flex;justif
 
 <div class="wrap">
 <header class="top">
-  <a class="brand" href="#"><i></i>Firstmonth</a>
+  <a class="brand" href="#"><i></i>Gildium</a>
   <nav><a href="#how">How it works</a><a href="#terms">Terms</a><a href="#kit">The kit</a><a href="#faq">FAQ</a><a href="#apply">Apply</a></nav>
 </header>
 
 <section class="hero" style="padding-top:36px">
   <div class="copy">
     <span class="eyebrow">Partner invitation · pilot cohort</span>
-    <h1>Feature a new app. Keep its first month.</h1>
-    <p class="lede">We are a product studio that ships small subscription apps every month. When someone from your audience subscribes, the first month's payment is yours. Minimum $25, paid once they renew.</p>
+    <h1>Feature what we ship. Keep the first month.</h1>
+    <p class="lede">Gildium is a venture studio. We ship subscription apps, iOS apps and media properties, and we put a funded offer on each one. When your audience subscribes through you, the first month is yours. Minimum $25, paid once they renew.</p>
     <div class="cta"><a class="btn" href="#apply">Apply for a seat</a><a class="btn ghost" href="#how">See how it works</a></div>
-    <p class="fine">Ten seats in the first cohort. For creators covering AI tools, productivity and small-business software with 1,000 to 50,000 followers.</p>
+    <p class="fine">Ten seats in the first cohort. For creators covering AI tools, productivity, design and small-business software, on any network, with 1,000 to 50,000 followers.</p>
   </div>
-  <div class="frame"><div class="bar"><i></i><i></i><i></i><span>firstmonth.app/offers</span></div><img src="{{shot:offers}}" width="1280" height="800" alt="The Firstmonth offer feed: six new apps, each with a price, a bounty and a ready creative kit"></div>
+  <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/offers</span></div><img src="{{shot:offers}}" width="1280" height="800" alt="The Gildium offer feed: this week's funded offers across apps and media properties, each with its bounty type and a ready creative kit"></div>
 </section>
 
 <div class="strip">
   <div><div class="v">100%</div><div class="l">of month one is yours</div></div>
   <div><div class="v">$25</div><div class="l">floor per retained subscriber</div></div>
-  <div><div class="v">2+</div><div class="l">new funded apps every month</div></div>
+  <div><div class="v">2+</div><div class="l">new funded offers every month</div></div>
   <div><div class="v">12 mo</div><div class="l">app-live guarantee, or we pay anyway</div></div>
 </div>
 
 <section id="how">
-  <div class="sec-head"><span class="eyebrow">How it works</span><h2>Five steps from feed to payout</h2><p class="lede">Screens below are from the partner dashboard you get on day one. The listings shown are examples; the live feed changes every week.</p></div>
+  <div class="sec-head"><span class="eyebrow">How it works</span><h2>Five steps from offer to payout</h2><p class="lede">Screens below are from the partner dashboard you get on day one. Offers shown are illustrative; the live feed changes every week.</p></div>
   <div class="steps">
     <div class="step">
-      <div class="txt"><span class="num">STEP 1 OF 5</span><h3>Pick an app from this week's feed</h3><p>Every Monday the feed shows what the studio launched or refreshed. Each listing tells you the price, your bounty, the category and whether the creative kit is ready. Nothing appears until its bounties are funded.</p><p class="note">Only apps with paying customers and a working checkout make the feed. We test the funnel before you spend a minute on it.</p></div>
-      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>firstmonth.app/offers</span></div><img src="{{shot:offers}}" width="1280" height="800" alt="Offer feed with six example apps"></div>
+      <div class="txt"><span class="num">STEP 1 OF 5</span><h3>Pick an offer from this week's feed</h3><p>Every Monday the feed shows the offers the studio has funded that week. Not every offer is a subscription app: some pay 100% of month one, some a flat bounty per paid iOS subscriber, some a few dollars per confirmed newsletter signup on a media property. Each card states the type, the amount and whether the kit is ready.</p><p class="note">Nothing appears until its bounties are escrowed and the funnel has been tested with real customers. Filter by offer type if you only want one kind.</p></div>
+      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/offers</span></div><img src="{{shot:offers}}" width="1280" height="800" alt="Offer feed with five example offers across three bounty types"></div>
     </div>
     <div class="step">
-      <div class="txt"><span class="num">STEP 2 OF 5</span><h3>Grab your link, your coupon and the kit</h3><p>One click gives you a tracked link and a personal coupon code that gives your audience 10% off month one. The kit has a demo video, screenshots in light and dark, a written angle with three hooks, a free creator account and the disclosure text.</p><p class="note">Use both the link and the coupon. If a browser blocks the cookie, the coupon still credits you.</p></div>
-      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>firstmonth.app/offers/draftline</span></div><img src="{{shot:offer}}" width="1280" height="800" alt="Offer detail for an example app showing the tracked link, coupon, creative kit and listing terms"></div>
+      <div class="txt"><span class="num">STEP 2 OF 5</span><h3>Grab your links, your coupon and the kit</h3><p>One click gives you a tracked link for every network you publish on, plus a personal coupon code that gives your audience 10% off month one. The kit has a demo video in vertical and horizontal, screenshots in light and dark, an angle with hooks written per network, a free creator account and the disclosure text.</p><p class="note">Use both the link and the coupon. If a browser blocks the cookie, the coupon still credits you.</p></div>
+      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/offers/postsie</span></div><img src="{{shot:offer}}" width="1280" height="800" alt="Offer detail for Postsie showing per-network links, coupon, creative kit and the offer terms"></div>
     </div>
     <div class="step">
-      <div class="txt"><span class="num">STEP 3 OF 5</span><h3>Post the way you always do</h3><p>A review, a tutorial, a "five tools this week" segment, a newsletter mention, a Discord pin. Your format, your voice. We ask for two things: an honest take and a visible disclosure, which the kit gives you word for word.</p><p class="note">No brand bidding, no coupon sites, no incentivised sign-ups. That protects your bounty as much as ours.</p></div>
-      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>firstmonth.app/links</span></div><img src="{{shot:links}}" width="1280" height="800" alt="My links page listing every active link and coupon, where clicks came from, a posting checklist and ready-to-paste disclosure text"></div>
+      <div class="txt"><span class="num">STEP 3 OF 5</span><h3>Post everywhere you publish</h3><p>One offer, every network. A YouTube review, a 30-second TikTok or Reel, a paragraph in your newsletter, a LinkedIn or Threads post with the hook, a pinned message in your Discord. Each network gets its own link, so the dashboard shows which channel actually converts and you can double down there. Your format, your voice, an honest take, and the disclosure visible before the link.</p><p class="note">No brand bidding, no coupon sites, no incentivised sign-ups. That protects your bounty as much as ours.</p></div>
+      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/links</span></div><img src="{{shot:links}}" width="1280" height="800" alt="My links page: one link per network for each offer, subscribers by network, formats per network and ready-to-paste disclosure text"></div>
     </div>
     <div class="step">
       <div class="txt"><span class="num">STEP 4 OF 5</span><h3>Watch each referral move from click to renewal</h3><p>Your earnings page shows every referral by stage: clicked, signed up, paid month one, renewed. A bounty becomes payable the day the subscriber's second payment clears, usually about 35 days after they sign up.</p><p class="note">Refunds inside the hold window cancel that bounty and nothing else. You never owe money back.</p></div>
-      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>firstmonth.app/earnings</span></div><img src="{{shot:earnings}}" width="1280" height="800" alt="Earnings table with stages for each referral"></div>
+      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/earnings</span></div><img src="{{shot:earnings}}" width="1280" height="800" alt="Earnings table with stages for each referral"></div>
     </div>
     <div class="step">
-      <div class="txt"><span class="num">STEP 5 OF 5</span><h3>Get one payout for every app, on the 1st</h3><p>Payable bounties across all apps go out together on the first of the month by Wise or Stripe, once they reach $50. Your tax form is collected once at sign-up. Monthly statements as PDF.</p><p class="note">Every listing is pre-funded before it appears. If we retire an app inside 12 months, earned bounties are paid from that escrow.</p></div>
-      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>firstmonth.app/payouts</span></div><img src="{{shot:payouts}}" width="1280" height="800" alt="Payouts page showing the next payout, payout history and account settings"></div>
+      <div class="txt"><span class="num">STEP 5 OF 5</span><h3>Get one payout for every app, on the 1st</h3><p>Payable bounties across all apps go out together on the first of the month by Wise or Stripe, once they reach $50. Your tax form is collected once at sign-up. Monthly statements as PDF.</p><p class="note">Every offer is pre-funded before it appears. If we retire a product inside 12 months, earned bounties are paid from that escrow.</p></div>
+      <div class="frame"><div class="bar"><i></i><i></i><i></i><span>gildium.link/payouts</span></div><img src="{{shot:payouts}}" width="1280" height="800" alt="Payouts page showing the next payout, payout history and account settings"></div>
     </div>
   </div>
 </section>
 
 <section id="terms" style="padding-top:0">
   <div class="ledger-wrap">
-    <div><span class="eyebrow" style="color:var(--dark-muted)">The terms, in full</span><h2 style="margin-top:14px">Same terms on every listing</h2><p class="lede" style="margin-top:14px">No per-app negotiation and no surprises in the fine print. What a listing can change is the price of the app, and so the size of the bounty above the floor.</p></div>
+    <div><span class="eyebrow" style="color:var(--dark-muted)">The terms, in full</span><h2 style="margin-top:14px">Same terms on every offer</h2><p class="lede" style="margin-top:14px">No per-offer negotiation and no surprises in the fine print. What changes between offers is the type and the amount. The hold, the escrow and the notice period never change.</p></div>
     <div class="ledger">
-      <div><span>Bounty</span><span>100% of the subscriber's first monthly payment</span></div>
-      <div><span>Floor</span><span>$25.00, even on a $9 app</span></div>
+      <div><span>First-month bounty</span><span>100% of month one, floor $25.00</span></div>
+      <div><span>Per paid subscriber</span><span>flat amount per paid app-store subscriber</span></div>
+      <div><span>Per newsletter signup</span><span>flat amount per confirmed signup, paid after 30 days</span></div>
       <div><span>Payable</span><span>when the 2nd renewal clears</span></div>
-      <div><span>Attribution</span><span>60-day link, plus your coupon</span></div>
+      <div><span>Attribution</span><span>60-day link per network, plus your coupon</span></div>
       <div><span>Refund inside hold</span><span>that bounty is cancelled, no clawback</span></div>
       <div><span>Payout</span><span>1st of the month, $50 minimum, Wise or Stripe</span></div>
-      <div><span>App retired early</span><span>earned bounties paid from escrow</span></div>
+      <div><span>Product retired early</span><span>earned bounties paid from escrow</span></div>
       <div><span>Program notice</span><span>60 days before any change to these terms</span></div>
-      <div class="total"><span>Example: $19 app, 4 retained subscribers</span><span>$100.00</span></div>
+      <div class="total"><span>Example: Postsie, 4 retained subscribers</span><span>$100.00</span></div>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0">
-  <div class="sec-head"><span class="eyebrow">Worked example</span><h2>One video, one $19 app</h2><p class="lede">What the timeline looks like for a single referral, using a real listing price from the example feed above.</p></div>
+  <div class="sec-head"><span class="eyebrow">Worked example</span><h2>One video, one $19 offer</h2><p class="lede">What the timeline looks like for a single referral on a first-month bounty, using the Postsie offer from the feed above.</p></div>
   <div class="example">
     <div class="ex"><span class="when">Day 0</span><div class="amt">$0.00</div><p>Your viewer signs up with your link or coupon and pays $19 for month one. It shows on your earnings page as "renewal due".</p></div>
     <div class="ex"><span class="when">Day 30 to 35</span><div class="amt">$25.00</div><p>Their second payment clears. The bounty flips to payable: 100% of month one is $19, so the $25 floor applies.</p></div>
@@ -234,8 +235,8 @@ footer{padding:32px 0 56px;color:var(--ink-3);font-size:14px;display:flex;justif
   <div class="cols">
     <div><div class="sec-head" style="margin-bottom:20px"><span class="eyebrow">Who we are looking for</span><h2>Small channels with a real audience</h2></div>
       <ul>
-        <li><b>1,000 to 50,000 followers</b><span>on YouTube, TikTok, a newsletter, a blog or a Discord you run.</span></li>
-        <li><b>You cover software</b><span>AI tools, productivity, creator tools, small-business or personal finance.</span></li>
+        <li><b>1,000 to 50,000 followers</b><span>on YouTube, TikTok, Instagram, Threads, X, LinkedIn, a newsletter, a blog or a Discord you run. More than one network is a plus.</span></li>
+        <li><b>You cover software or design</b><span>AI tools, productivity, creator tools, design and small-business software.</span></li>
         <li><b>You post at least twice a month</b><span>and have done so for the last six months.</span></li>
         <li><b>You disclose</b><span>and you are comfortable saying when an app is not for someone.</span></li>
       </ul>
@@ -244,7 +245,7 @@ footer{padding:32px 0 56px;color:var(--ink-3);font-size:14px;display:flex;justif
       <ul>
         <li><b>Demo video</b><span>45 to 60 seconds, vertical and horizontal, no watermark.</span></li>
         <li><b>Six screenshots</b><span>light and dark, at 2x, of the app doing the thing it is for.</span></li>
-        <li><b>Angle and three hooks</b><span>one paragraph on who it is for and why now.</span></li>
+        <li><b>Angle and hooks per network</b><span>one paragraph on who it is for, and a hook each for video, short-form, newsletter and text posts.</span></li>
         <li><b>Free creator account</b><span>pre-loaded with sample data so you can record your own walkthrough.</span></li>
         <li><b>Disclosure text</b><span>for the description or caption, written to the 2023 FTC guides.</span></li>
       </ul>
@@ -255,25 +256,26 @@ footer{padding:32px 0 56px;color:var(--ink-3);font-size:14px;display:flex;justif
 <section id="faq" style="padding-top:0">
   <div class="sec-head"><span class="eyebrow">Questions</span><h2>What partners ask first</h2></div>
   <div class="faq">
-    <details><summary>Why 100% of month one and not a recurring share?</summary><p>Because a full payment after your first referral is what makes creators keep going, and because for a new app the first paying month is the number that matters. If you would rather have a recurring split on a listing, tell us in the application. We are testing both in the pilot.</p></details>
+    <details><summary>Why 100% of month one and not a recurring share?</summary><p>Because a full payment after your first referral is what makes creators keep going, and because for a new product the first paying month is the number that matters. Offers that are not monthly subscriptions use a flat bounty instead. If you would rather have a recurring split on an offer, tell us in the application. We are testing both in the pilot.</p></details>
     <details><summary>Why wait for the second renewal?</summary><p>It covers the refund window without a clawback, it filters out sign-ups that were never real, and it means the studio only pays for subscribers who stayed. The hold is about 35 days, in line with the 30 to 90 day holds on most programs.</p></details>
-    <details><summary>What happens if the studio kills an app?</summary><p>Every listing is pre-funded before you see it. If an app is retired inside 12 months of listing, bounties you already earned are paid from that escrow on the normal schedule. You also get 60 days' notice before any change to the terms.</p></details>
-    <details><summary>Can I subscribe through my own link?</summary><p>No. Self-referrals are cancelled, and because bounties pay after the second renewal there is nothing to gain. Coupon sites, paid ads on the app's name and incentivised sign-ups are out for the same reason.</p></details>
+    <details><summary>What happens if the studio retires a product?</summary><p>Every listing is pre-funded before you see it. If an app is retired inside 12 months of listing, bounties you already earned are paid from that escrow on the normal schedule. You also get 60 days' notice before any change to the terms.</p></details>
+    <details><summary>Can I subscribe through my own link?</summary><p>No. Self-referrals are cancelled, and because bounties pay after the second renewal there is nothing to gain. Coupon sites, paid ads on a product's name and incentivised sign-ups are out for the same reason.</p></details>
     <details><summary>Do I need to be in the US?</summary><p>No. We collect a W-9 or W-8BEN once at sign-up and pay by Wise or Stripe in your currency. EU partners invoice under reverse charge, which the monthly statement handles for you.</p></details>
-    <details><summary>Who is the studio?</summary><p>An independent product studio building small subscription apps with AI tooling. Every app in the feed has paying customers before it is listed, and the person who built it reads your feedback.</p></details>
+    <details><summary>Who is Gildium?</summary><p>A venture studio that builds and runs its own products: subscription apps, iOS apps and media properties such as Demilked. Every offer in the feed has real customers before it is listed, and the person who runs the product reads your feedback.</p></details>
   </div>
 </section>
 
 <section id="apply" style="padding-top:0">
   <div class="apply">
-    <div><span class="eyebrow">Apply</span><h2 style="margin-top:14px">Ten seats. Reply within three working days.</h2><p class="lede">Send your main channel and what you cover. If it fits, you get a dashboard login, the current feed and your first kit the same week.</p></div>
+    <div><span class="eyebrow">Apply</span><h2 style="margin-top:14px">Ten seats. Reply within three working days.</h2><p class="lede">Send your channels and what you cover. If it fits, you get a dashboard login, this week's offers and your first kit the same week.</p></div>
     <div>
     <form id="f" onsubmit="event.preventDefault();this.classList.add('sent')">
       <label>Name<input name="name" required autocomplete="name"></label>
       <label>Email<input name="email" type="email" required autocomplete="email"></label>
       <label class="full">Main channel URL<input name="channel" type="url" required placeholder="https://"></label>
+      <label class="full">Other networks you publish on<input name="networks" placeholder="TikTok, newsletter, LinkedIn…"></label>
       <label>Audience size<select name="size" required><option value="">Choose</option><option>1,000 to 5,000</option><option>5,000 to 20,000</option><option>20,000 to 50,000</option><option>Over 50,000</option></select></label>
-      <label>Format<select name="format" required><option value="">Choose</option><option>YouTube</option><option>TikTok or Shorts</option><option>Newsletter</option><option>Blog</option><option>Discord or community</option><option>Mixed</option></select></label>
+      <label>Main format<select name="format" required><option value="">Choose</option><option>YouTube</option><option>TikTok, Reels or Shorts</option><option>Newsletter</option><option>Blog</option><option>LinkedIn, X or Threads</option><option>Discord or community</option></select></label>
       <label class="full">What you cover, and one recent post you are proud of<textarea name="about"></textarea></label>
       <button class="btn" type="submit">Send application</button>
     </form>
@@ -283,7 +285,7 @@ footer{padding:32px 0 56px;color:var(--ink-3);font-size:14px;display:flex;justif
 </section>
 
 <footer>
-  <span>Firstmonth · partner program of an independent product studio</span>
-  <span class="notice">Preview build. App listings on this page are examples.</span>
+  <span>Gildium · partner program of the Gildium venture studio</span>
+  <span class="notice">Preview build. Offer details on this page are illustrative.</span>
 </footer>
 </div>
